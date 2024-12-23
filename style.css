@@ -77,8 +77,10 @@ p {
 	display: flex;
 	justify-content: center;
 	align-items: center;
+	text-align: center;
 }
 .cell-button {
+	user-select: none;
 	flex-direction: column;
 	background-color: #f8f1e6;
 	width: 100%;
