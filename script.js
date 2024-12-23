@@ -1,5 +1,15 @@
 'use strict';
 
+// モーダルを開く
+function openModal() {
+	document.getElementById('modal').style.display = 'flex';
+}
+
+// モーダルを閉じる
+function closeModal() {
+	document.getElementById('modal').style.display = 'none';
+}
+
 console.log('Hello, world!');
 
 // 運勢リスト
@@ -10,13 +20,7 @@ const fortuneTitles = ["失物", "待人", "学問", "金運", "研究", "推し
 // 研究、終わる、終わらせよ
 
 // MutationObserverを設定
-const observer = new MutationObserver((mutationsList, observer) => {
-	mutationsList.forEach(mutation => {
-			if (mutation.type === 'childList') {
-					console.log('ボタンの内容が変更されました:', mutation);
-			}
-	});
-});
+const observer = new MutationObserver((mutationsList, observer) => {});
 
 // 要素取得
 const fortuneSlipContainer = document.getElementById('fortune-slip-container');
@@ -66,6 +70,7 @@ for (let i = 1; i < 10; i++) {
 		observer.observe(button, { childList: true, subtree: true });
 		// リスナー設定
 		button.addEventListener('click', () => {
+			openModal();
 			console.log(i + "," + j +': ボタンがクリックされました:');
 		});
 

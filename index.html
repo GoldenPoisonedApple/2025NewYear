@@ -30,6 +30,8 @@
 			</div>
 		</div>
 		<h1>= 2025</h1>
+		<!-- ボタン -->
+		<button class="open-btn" onclick="openModal()">モーダルを開く</button>
 	</div>
 
 	<!-- footer -->
@@ -46,6 +48,16 @@
 			<button class="cell-button"></button>
 		</div>
 	</template>
+
+	<!-- モーダル -->
+	<div class="modal" id="modal">
+		<div class="modal-content">
+			<h2>おみくじ</h2>
+			<p>今年の運勢は...</p>
+			<p id="fortune-result"></p>
+			<button class="close-btn" onclick="closeModal()">閉じる</button>
+		</div>
+	</div>
 </body>
 
 
