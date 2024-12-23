@@ -31,8 +31,20 @@ for (let i = 1; i < 10; i++) {
 		const button = cell.querySelector('.cell-button');
 		button.textContent = `${i * j}`; // i*j の値をボタンに設定
 		// セルの大きさを設定
-		cell.firstElementChild.style.width = `${cellSize}px`;
-		cell.firstElementChild.style.height = `${cellSize}px`;
+		button.style.width = `${cellSize}px`;
+		button.style.height = `${cellSize}px`;
+		button.style.position = 'relative'; // 内部のボーダー線に備える
+		button.style.display = 'flex'; // 中央寄せのため
+		button.style.alignItems = 'center';
+		button.style.justifyContent = 'center';
+
+		// 下部に式を表示
+		const text = document.createElement('p');
+		text.textContent = `${i} × ${j}`;
+		text.style.fontSize = '0.8rem';
+		text.style.color = '#ff2121';
+		button.appendChild(text);
+
 		fortuneSlipContainer.append(cell);
 	}
 }
