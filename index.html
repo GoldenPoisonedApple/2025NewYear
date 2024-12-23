@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="ja">
+
+
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1"><!-- レスポンシブ対応 (多分)こいつのせいでスマホ表示がおかしくなったが付けないと怒られる -->
+	<title>Happy New Year!</title>
+	<link rel="stylesheet" href="style.css">
+
+</head>
+
+<!-- 描画要素 気まぐれにより右クリックしても何も起こらなくした -->
+<body oncontextmenu="return false">
+	<!-- title -->
+	<div class="title">
+		<h1 class="year-num">2025年</h1>
+		<h1>あけまして&#8203;おめでとうございます</h1>
+	</div>
+
+	<!-- main -->
+	<div class="main">
+		<h2>・2025年おみくじ</h2>
+		<p>実は、2025 = <span>&#x2211;</span><sup>9</sup><sub>i=1</sub><span>&#x2211;</span><sup>9</sup><sub>j=1</sub> i×jとなります。九九の表の数字を全て足し合わせた数字となるため、数学上とても縁起の良い年とされています(適当)。</p>
+		<div class="fortune-slip" id="fortune-slip">
+
+		</div>
+	</div>
+
+	<!-- footer -->
+	<footer>
+		<p>今年は巳年、乙巳（きのとみ）らしいですね。皆さんにおかれましては、進学就職等で変化の年となることと思います。今年が皆さんにとって素晴らしい一年となることを、心よりお祈り申し上げます。</p>
+		<p>from : へっへっ、個人用アカウント、国士無双三十六面待ち</p>
+	</footer>
+
+
+	<!-- templete -->
+	<template id="cell-template">
+		<div class="cell">
+			aaa
+		</div>
+	</template>
+</body>
+
+
+<!-- JavaScript -->
+<script src="script.js"></script>
+
+</html>
