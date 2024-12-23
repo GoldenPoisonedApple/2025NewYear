@@ -16,6 +16,8 @@ html {
 }
 
 body {
+  display: flex;
+  flex-direction: column;
 	background-color: #f8f1e6;
 	margin: 0;
 	padding: 0;
@@ -50,26 +52,53 @@ p {
 
 /* メインコンテンツ */
 .main {
+	flex: 1;
 	margin: 0;
 	padding: 0.5rem;
 }
 
-.fortune-slip {
+/* おみくじ */
+.fortune-slip-wrapper {
+	display: flex;
+	justify-content: center;
+	align-items: center;
+}
+.fortune-slip-container {
+	display: grid;
+	grid-template-columns: repeat(9, 1fr); /* 9列 */
+	grid-template-rows: repeat(9, 1fr); /* 9行 */
 	background-color: #fff;
 	border: 2px solid #ff2121;
-	margin: 0.5rem 0;
-	padding: 1rem;
+	margin: 0.5rem;
 }
+.fortune-slip-cell {
+	background-color: white;
+	outline: 1px solid gray; /* 個別に線を表示 */
+	display: flex;
+	justify-content: center;
+	align-items: center;
+}
+.cell-button {
+	background-color: #f8f1e6;
+	width: 100%;
+	height: 100%;
+	font-size: clamp(0.5rem, 5vw, 2rem);
 
+}
+.cell-button:hover {
+	background-color: #fde9c9;
+}
+.cell-button:active {
+	background-color: #d8a956;
+	box-shadow: 0 2px 3px rgba(0, 0, 0, 0.3); /* 押し込まれたような影に */
+
+}
 
 /* フッター */
 footer {
 	background-color: #f8f1e6;
 	border-top: 2px solid #ff2121;
-	position: fixed;
-	bottom: 0;
-	left: 0;
-	right: 0;
+	margin-top: 2rem;
 	padding: 0.5rem;
 	/* フッターを最前面に表示 */
 	z-index: 10;
