@@ -1,7 +1,6 @@
 'use strict';
 
 // カスみたいなjavascriptへようこそ
-// cellの所はstyleに書ける
 
 // モーダルを開く
 function openModal(i, j) {
@@ -76,10 +75,6 @@ for (let i = 1; i < 10; i++) {
 		// セルの大きさを設定
 		button.style.width = `${cellSize}px`;
 		button.style.height = `${cellSize}px`;
-		button.style.position = 'relative'; // 内部のボーダー線に備える
-		button.style.display = 'flex'; // 中央寄せのため
-		button.style.alignItems = 'center';
-		button.style.justifyContent = 'center';
 
 		// 下部に式を表示
 		const text = document.createElement('p');
