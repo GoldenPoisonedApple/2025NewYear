@@ -30,8 +30,6 @@
 			</div>
 		</div>
 		<h1>= 2025</h1>
-		<!-- ボタン -->
-		<button class="open-btn" onclick="openModal()">モーダルを開く</button>
 	</div>
 
 	<!-- footer -->
@@ -52,7 +50,7 @@
 
 	<!-- モーダル -->
 	<button class="modal" id="modal" onclick="closeModal()">
-		<div class="modal-content">
+		<div class="modal-content" onclick="event.stopPropagation()">
 			<h1>おみくじ</h1>
 			<h2>今年の<span id="fortune-type"></span>運は...</h2>
 			<video class="fortune-video" id="fortune-video" autoplay muted>
