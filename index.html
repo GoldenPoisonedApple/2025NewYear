@@ -39,6 +39,7 @@
 		<p>今年は巳年、乙巳（きのとみ）らしいですね。皆様におかれましては、進学や就職等で変化の年となることと思います。今年も皆様にとって素晴らしい一年となりますように。</p>
 		<p>from : へっへっ、個人用アカウント、国士無双三十六面待ち</p>
 		@非実在株式会社 CFEEL 代表取締役 伊藤
+		3Dテクスチャ：CC0 Textures
 	</footer>
 
 
@@ -50,14 +51,13 @@
 	</template>
 
 	<!-- モーダル -->
-	<div class="modal" id="modal">
+	<button class="modal" id="modal" onclick="closeModal()">
 		<div class="modal-content">
-			<h2>おみくじ</h2>
-			<p>今年の運勢は...</p>
+			<h1>おみくじ</h1>
+			<h2>今年の<span id="fortune-type"></span>運は...</h2>
 			<p id="fortune-result"></p>
-			<button class="close-btn" onclick="closeModal()">閉じる</button>
 		</div>
-	</div>
+	</button>
 </body>
 
 

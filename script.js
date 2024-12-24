@@ -1,7 +1,10 @@
 'use strict';
 
 // モーダルを開く
-function openModal() {
+function openModal(i, j) {
+	// 表示変更
+	fortuneType.textContent = `${fortuneTitles[j-1]}`;
+	// モーダル表示
 	document.getElementById('modal').style.display = 'flex';
 }
 
@@ -25,6 +28,7 @@ const observer = new MutationObserver((mutationsList, observer) => {});
 // 要素取得
 const fortuneSlipContainer = document.getElementById('fortune-slip-container');
 const fortuneSlipCell = document.getElementById('cell-template');
+const fortuneType = document.getElementById('fortune-type');
 
 // 幅取得 大きすぎる場合は600pxに設定
 const width = Math.min(document.getElementById('fortune-slip-wrapper').clientWidth, 600);
@@ -70,7 +74,7 @@ for (let i = 1; i < 10; i++) {
 		observer.observe(button, { childList: true, subtree: true });
 		// リスナー設定
 		button.addEventListener('click', () => {
-			openModal();
+			openModal(i, j);			
 			console.log(i + "," + j +': ボタンがクリックされました:');
 		});
 
