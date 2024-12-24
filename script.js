@@ -1,19 +1,26 @@
 'use strict';
 
+// カスみたいなjavascriptへようこそ
+// cellの所はstyleに書ける
+
 // モーダルを開く
 function openModal(i, j) {
 	// 表示変更
 	fortuneType.textContent = `${fortuneTitles[j-1]}`;
 	// モーダル表示
 	document.getElementById('modal').style.display = 'flex';
+	// ビデオ再生
+	video.style.display = 'inline-block';
+	video.currentTime = 0;
+	video.play();
+	// 結果非表示
+	result.style.display = 'none';
 }
 
 // モーダルを閉じる
 function closeModal() {
 	document.getElementById('modal').style.display = 'none';
 }
-
-console.log('Hello, world!');
 
 // 運勢リスト
 const fortuneTitles = ["失物", "待人", "学問", "金運", "研究", "推し", "アニメ", "ゲーム", "ガチャ"];
@@ -25,10 +32,21 @@ const fortuneTitles = ["失物", "待人", "学問", "金運", "研究", "推し
 // MutationObserverを設定
 const observer = new MutationObserver((mutationsList, observer) => {});
 
+// 結果表示欄取得
+const result = document.getElementById('fortune-result');
+// ビデオ要素を取得
+const video = document.getElementById('fortune-video');
+// ビデオが終了したら結果表示
+video.addEventListener('ended', () => {
+	video.style.display = 'none';
+	result.style.display = 'inline-block';
+});
+
 // 要素取得
 const fortuneSlipContainer = document.getElementById('fortune-slip-container');
 const fortuneSlipCell = document.getElementById('cell-template');
 const fortuneType = document.getElementById('fortune-type');
+
 
 // 幅取得 大きすぎる場合は600pxに設定
 const width = Math.min(document.getElementById('fortune-slip-wrapper').clientWidth, 600);

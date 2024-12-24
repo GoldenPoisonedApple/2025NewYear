@@ -29,10 +29,13 @@ h1 {
 	font-size: 2.5rem;
 	margin: 0;
 }
-
 h2 {
 	font-size: 1.5rem;
 	margin: 0;
+}
+h3 {
+	font-size: 1.2rem;
+	margin: 0.5rem 0;
 }
 
 p {
@@ -143,4 +146,14 @@ footer {
 	border: 2px solid #ff2121;
 	padding: 1rem;
 	width: 80%;
+	z-index: 105;
+}
+.fortune-video {
+	width: 50%;
+	height: auto;
+	transform: scale(1.01); /* 黒枠出現対策 */
+}
+.fortune-result {
+	display: none;
+	margin-top: 1.5rem;
 }
