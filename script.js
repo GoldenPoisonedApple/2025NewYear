@@ -4,11 +4,15 @@
 
 // モーダル管理クラス
 class ModalManager {
-	constructor(modalId, videoId, resultId, fortuneTitles) {
+	constructor(modalId, videoId, resultId, luckID, titleID, articleID, fortuneTitles, fortuneContents) {
 		this.modal = document.getElementById(modalId);
 		this.video = document.getElementById(videoId);
 		this.result = document.getElementById(resultId);
+		this.luck = document.getElementById(luckID);;
+		this.title = document.getElementById(titleID);;
+		this.article = document.getElementById(articleID);;
 		this.fortuneTitles = fortuneTitles;
+		this.fortuneContents = fortuneContents;
 		this.fortuneType = document.getElementById('fortune-type');
 
 		// ビデオ終了時のイベントリスナー設定
@@ -17,7 +21,11 @@ class ModalManager {
 
 	// モーダルを開く
 	open(i, j) {
+		// 内容反映
 		this.fortuneType.textContent = this.fortuneTitles[j - 1];
+		this.luck.textContent = this.fortuneContents[j - 1][i - 1][0];
+		this.title.textContent = this.fortuneContents[j - 1][i - 1][1];
+		this.article.textContent = this.fortuneContents[j - 1][i - 1][2];
 		this.modal.style.display = 'flex';
 		this.video.style.display = 'inline-block';
 		this.video.currentTime = 0;
@@ -82,7 +90,7 @@ class FortuneRenderer {
 				// ボタンクリック時のイベントリスナー設定
 				button.addEventListener('click', () => {
 					this.modalManager.open(i, j);
-					console.log(`${i}, ${j}: ボタンがクリックされました`);
+					// console.log(`${i}, ${j}: ボタンがクリックされました`);
 				});
 
 				this.container.append(cell);
@@ -98,12 +106,107 @@ function closeModal() {
 		modalManager.close();
 	}
 }
+// 吉、小吉、末吉、中吉、大吉、凶、大凶、微吉、微々々々吉
+// 待ち人、百万人来る、3人来る、行けたら行く(来ない)
+// ガチャ、当たる百連を引け
+// 研究、終わる、終わらせよ
 
 // 初期化処理
 (() => {
 	const fortuneTitles = ["失物", "待人", "学問", "金運", "研究", "推し", "アニメ", "ゲーム", "ガチャ"];
+	const fortuneContents = [[
+		["大吉", "ベッドの下から100個出てくる", "ちなみに私は寮のあのちっっっっっっっっさい部屋でスマホをかなりの頻度で失くします。部屋の小ささは失くす確率に関係ないようです。"],
+		["小吉", "ベッドの下にはない", "ベッドの下に在るのは大抵、ほこり・薄い本・変態と相場が決まっています。ポッケと玄関先を探しましょう。"],
+		["中吉", "失物：イライラ", "イライラは失くした方が(・∀・)ｲｲﾈ!!ガンガン失くしてこう。睡眠が鍵です。私は20年近く生きてきてやっと睡眠の大切さを知りました。このままいくと食事の大切さを知るのは40年後だと思います。"],
+		["吉", "", ""],
+		["凶", "失物：時間", "気づいたら年が明けていたと思ったら、授業が始まっていたりします。卒研は順調ですか？私は塵です。こんなものを作っているなら卒研をした方がいいと思います。"],
+		["末吉", "", ""],
+		["大吉", "", ""],
+		["吉", "", ""],
+		["lim<sub>x → 大</sub>大吉", "", ""]
+	], [
+		["", "", ""],
+		["", "", ""],
+		["", "", ""],
+		["", "", ""],
+		["", "", ""],
+		["", "", ""],
+		["", "", ""],
+		["", "", ""],
+		["", "", ""]
+	], [
+		["", "", ""],
+		["", "", ""],
+		["", "", ""],
+		["", "", ""],
+		["", "", ""],
+		["", "", ""],
+		["", "", ""],
+		["", "", ""],
+		["", "", ""]
+	], [
+		["", "", ""],
+		["", "", ""],
+		["", "", ""],
+		["", "", ""],
+		["", "", ""],
+		["", "", ""],
+		["", "", ""],
+		["", "", ""],
+		["", "", ""]
+	], [
+		["", "", ""],
+		["", "", ""],
+		["", "", ""],
+		["", "", ""],
+		["", "", ""],
+		["", "", ""],
+		["", "", ""],
+		["", "", ""],
+		["", "", ""]
+	], [
+		["", "", ""],
+		["", "", ""],
+		["", "", ""],
+		["", "", ""],
+		["", "", ""],
+		["", "", ""],
+		["", "", ""],
+		["", "", ""],
+		["", "", ""]
+	], [
+		["", "", ""],
+		["", "", ""],
+		["", "", ""],
+		["", "", ""],
+		["", "", ""],
+		["", "", ""],
+		["", "", ""],
+		["", "", ""],
+		["", "", ""]
+	], [
+		["", "", ""],
+		["", "", ""],
+		["", "", ""],
+		["", "", ""],
+		["", "", ""],
+		["", "", ""],
+		["", "", ""],
+		["", "", ""],
+		["", "", ""]
+	], [
+		["", "", ""],
+		["", "", ""],
+		["", "", ""],
+		["", "", ""],
+		["", "", ""],
+		["", "", ""],
+		["", "", ""],
+		["", "", ""],
+		["", "", ""]
+	]];
 
-	modalManager = new ModalManager('modal', 'fortune-video', 'fortune-result', fortuneTitles);
+	modalManager = new ModalManager('modal', 'fortune-video', 'fortune-result', 'fortune-result-luck', 'fortune-result-title', 'fortune-result-article', fortuneTitles, fortuneContents);
 	const fortuneRenderer = new FortuneRenderer('fortune-slip-wrapper', 'fortune-slip-container', 'cell-template', fortuneTitles, modalManager);
 
 	fortuneRenderer.renderTitles();
