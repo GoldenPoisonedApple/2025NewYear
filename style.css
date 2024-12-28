@@ -82,6 +82,8 @@ p {
 	text-align: center;
 }
 .cell-button {
+	/* 単語が途中で折り返されないようにする */
+	white-space: nowrap;
 	display: flex;
 	user-select: none;
 	flex-direction: column;
@@ -159,4 +161,9 @@ footer {
 .fortune-result {
 	display: none;
 	margin-top: 1.5rem;
+}
+#fortune-result-article {
+	padding-left: 0.5rem;
+	border-left: #000000 1px dashed;
+	text-align: left;
 }
