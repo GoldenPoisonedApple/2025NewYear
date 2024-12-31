@@ -61,13 +61,25 @@ class FortuneRenderer {
 	// タイトルを描画
 	renderTitles() {
 		this.fortuneTitles.forEach((title, i) => {
-			const text = document.createElement('p');
-			text.textContent = `${i + 1}の段\n${title}`;
-			text.classList.add('fortune-slip-cell');
-			text.style.width = `${this.cellSize}px`;
-			text.style.wordBreak = 'break-all';
-			text.style.fontSize = '0.9rem';
-			this.container.append(text);
+			const title_div = document.createElement('div');
+			// 段
+			const stage = document.createElement('p');
+			stage.textContent = `${i + 1}の段`;
+			stage.style.whiteSpace = 'nowrap';
+			stage.style.fontSize = '1rem';
+			title_div.appendChild(stage);
+			// 運type
+			const type = document.createElement('p');
+			type.textContent = `${title}`;
+			type.style.fontSize = '0.8rem';
+			type.style.whiteSpace = 'nowrap';
+			title_div.appendChild(type);
+			// スタイル適応
+			title_div.classList.add('fortune-slip-cell');
+			title_div.style.width = `${this.cellSize}px`;
+			title_div.style.height = `${this.cellSize}px`;
+			title_div.style.flexDirection = 'column';
+			this.container.append(title_div);
 		});
 	}
 
@@ -84,7 +96,6 @@ class FortuneRenderer {
 				const text = document.createElement('p');
 				text.textContent = `${j} × ${i}`;
 				text.style.fontSize = '0.8rem';
-				text.style.color = '#ff2121';
 				button.appendChild(text);
 
 				// ボタンクリック時のイベントリスナー設定
@@ -106,6 +117,9 @@ function closeModal() {
 		modalManager.close();
 	}
 }
+
+
+
 // 吉、小吉、末吉、中吉、大吉、凶、大凶、微吉、微々々々吉
 // 待ち人、百万人来る、3人来る、行けたら行く(来ない)
 // ガチャ、当たる百連を引け
