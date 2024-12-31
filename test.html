@@ -4,39 +4,38 @@
 <head>
 	<meta charset="UTF-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
-	<title>再生バー非表示のMP4動画</title>
+	<title>浮き出るボタン</title>
 	<style>
-		video {
-			display: block;
-			width: 640px;
-			height: 360px;
+		body {
+			display: flex;
+			justify-content: center;
+			align-items: center;
+			height: 100vh;
+			background-color: #f0f0f0;
+			margin: 0;
+		}
+
+		.button {
+			background-color: #007BFF;
+			color: white;
+			border: none;
+			padding: 15px 30px;
+			font-size: 18px;
+			border-radius: 10px;
+			box-shadow: 0 5px #0056b3;
 			cursor: pointer;
-			/* クリック可能であることを示す */
+			transition: all 0.2s ease;
+		}
+
+		.button:active {
+			transform: translateY(-3px);
+			box-shadow: 0 8px #0056b3;
 		}
 	</style>
 </head>
 
 <body>
-	<h1>再生バー非表示の動画</h1>
-	<video id="video" autoplay muted>
-		<source src="FortuneSlip.mp4" type="video/mp4">
-		さぁぁぁ、今年の運勢は...！？
-	</video>
-
-	<script>
-		const video = document.getElementById('video');
-
-		// 動画をクリックすると再生/停止を切り替え
-		video.addEventListener('click', () => {
-			if (video.paused) {
-				video.play();
-			} else {
-				video.pause();
-				// 
-			}
-		});
-
-	</script>
+	<button class="button">浮き出るボタン</button>
 </body>
 
 </html>
