@@ -1,5 +1,5 @@
 .link-preview {
-	display: flex;
+	display: none;
 	align-items: center;
 	gap: 1rem;
 	padding: 1rem;
@@ -16,18 +16,18 @@
 	border-radius: 8px;
 	box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
 }
-.link-preview .content {
+.link-preview .comic-content {
 	display: flex;
 	flex-direction: column;
 	gap: 0.5rem;
 }
-.link-preview .content a {
+.link-preview .comic-content a {
 	text-decoration: none;
 	color: #0073e6;
 	font-weight: bold;
 	font-size: 1.1rem;
 }
-.link-preview .content p {
+.link-preview .comic-content p {
 	margin: 0;
 	color: #333;
 	font-size: 0.9rem;

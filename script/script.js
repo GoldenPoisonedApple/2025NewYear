@@ -6,7 +6,7 @@
 
 // モーダル管理クラス
 class ModalManager {
-	constructor(modalId, videoId, resultId, luckID, titleID, articleID, fortuneTitles, fortuneContents) {
+	constructor(modalId, videoId, resultId, luckID, titleID, articleID, fortuneTitles, fortuneContents, comicsData) {
 		this.modal = document.getElementById(modalId);
 		this.video = document.getElementById(videoId);
 		this.result = document.getElementById(resultId);
@@ -15,7 +15,9 @@ class ModalManager {
 		this.article = document.getElementById(articleID);;
 		this.fortuneTitles = fortuneTitles;
 		this.fortuneContents = fortuneContents;
+		this.comicsData = comicsData;
 		this.fortuneType = document.getElementById('fortune-type');
+		this.comic = document.getElementById('reccomend-comic');
 
 		// ビデオ終了時のイベントリスナー設定
 		this.video.addEventListener('ended', this.showResult.bind(this));
@@ -24,15 +26,23 @@ class ModalManager {
 	// モーダルを開く
 	open(i, j) {
 		// 内容反映
+		// 運勢関係
 		this.fortuneType.textContent = this.fortuneTitles[j - 1];
 		this.luck.innerHTML = this.fortuneContents[j - 1][i - 1][0];
 		this.title.innerHTML = this.fortuneContents[j - 1][i - 1][1];
 		this.article.innerHTML = this.fortuneContents[j - 1][i - 1][2];
+		// 漫画関係
+		document.getElementById("preview-link").textContent = this.comicsData[j - 1][i - 1][0];
+		document.getElementById("preview-description").textContent = this.comicsData[j - 1][i - 1][1];
+		document.getElementById("preview-image").src = this.comicsData[j - 1][i - 1][2];
+		document.getElementById("preview-link").href = this.comicsData[j - 1][i - 1][3];
+
 		this.modal.style.display = 'flex';
 		this.video.style.display = 'inline-block';
 		this.video.currentTime = 0;
 		this.video.play();
 		this.result.style.display = 'none';
+		this.comic.style.display = 'none';
 	}
 
 	// モーダルを閉じる
@@ -44,6 +54,7 @@ class ModalManager {
 	showResult() {
 		this.video.style.display = 'none';
 		this.result.style.display = 'inline-block';
+		this.comic.style.display = 'flex';
 	}
 }
 
@@ -218,7 +229,14 @@ function closeModal() {
 		["小吉", "コート買ってみました", "今年始めてコートなるものを買ってみたんですけどいいですねあれ。そこまであったかく無いので、屋内でも暑くならないのが利点。普段がっつり外に出ない人間にとってはあれで十分です。ロングコートだとマトリックスごっこもできます。"]
 	]];
 
-	modalManager = new ModalManager('modal', 'fortune-video', 'fortune-result', 'fortune-result-luck', 'fortune-result-title', 'fortune-result-article', fortuneTitles, fortuneContents);
+	const comicsData = [
+		[
+			["薬屋のひとりごと", "「小説家になろう」発！　ヒーロー文庫の大人気タイトル『薬屋のひとりごと』が、待望のコミカライズ！　中世の宮中で下働きをする少女・猫猫（マオマオ）。花街で薬師をやっていた彼女が、帝の御子たちが皆短命であるという噂を聞いてしまったところから、物語は動き始める。持ち前の好奇心と知識欲に突き動かされ、興味本位でその原因を調べ始める猫猫の運命は――…!? ※「小説家になろう」は株式会社ヒナプロジェクトの登録商標です。", "https://piccoma.kakaocdn.net/dn/buYLTw/btsJFDsZ2rK/h5adVAC1udrT1vY0OOPKj0/cover_x2", "https://piccoma.com/web/product/29915?etype=episode"],
+			["", "", ""]
+		]
+	];
+
+	modalManager = new ModalManager('modal', 'fortune-video', 'fortune-result', 'fortune-result-luck', 'fortune-result-title', 'fortune-result-article', fortuneTitles, fortuneContents, comicsData);
 	const fortuneRenderer = new FortuneRenderer('fortune-slip-wrapper', 'fortune-slip-container', 'cell-template', fortuneTitles, modalManager);
 
 	fortuneRenderer.renderTitles();
