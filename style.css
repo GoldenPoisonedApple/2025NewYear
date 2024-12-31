@@ -1,3 +1,5 @@
+/* こんな所見るなよ */
+
 /* はんなり明朝体 */
 /*
 @import url('https://fonts.googleapis.com/earlyaccess/hannari.css');
@@ -40,6 +42,13 @@ h3 {
 p {
 	font-size: 0.9rem;
 	margin: 0;
+}
+
+.no-select {
+	user-select: none; /* テキスト選択を無効化 */
+	-webkit-user-select: none; /* Safari用 */
+	-moz-user-select: none; /* Firefox用 */
+	-ms-user-select: none; /* IE用 */
 }
 
 .title {
@@ -169,4 +178,65 @@ footer {
 	padding-left: 0.5rem;
 	border-left: #000000 1px dashed;
 	text-align: left;
+}
+
+
+/* 吹き出し */
+.balloon-parent {
+	width: 100%;
+	position: fixed;
+	bottom: 0;
+	display: block;
+	justify-content: center;	/* 中央揃え */
+	z-index: 2;
+}
+.balloon {
+	position: relative;
+	display: inline-block;
+	margin: 0 1rem 1.5rem 1rem;
+	padding: 7px 10px;
+	min-width: 50px;
+	max-width: 100%;
+	color: #ffffff;
+	font-size: 1rem;
+	-webkit-user-select: none;
+	user-select: none;
+	background: #000000;
+	border: solid 3px #ffffff;
+	box-sizing: border-box;
+	border-radius: 15px;
+
+	-webkit-animation: feed-in 1s 0s;
+	animation: feed-in 1s 0s;
+}
+.balloon:before {
+	content: "";
+	position: absolute;
+	bottom: -24px;
+	left: 50%;
+	margin-left: -15px;
+	border: 12px solid transparent;
+	border-top: 12px solid #000000;
+	z-index: 3;
+}
+.balloon:after {
+	content: "";
+	position: absolute;
+	bottom: -30px;
+	left: 50%;
+	margin-left: -17px;
+	border: 14px solid transparent;
+	border-top: 14px solid #ffffff;
+}
+.balloon p {
+	margin: 0;
+	padding: 0;
+}
+@keyframes feed-in {
+	0% {opacity:0;}
+	100% {opacity:1;}
+}
+@keyframes feed-out {
+	0% {opacity:1;}
+	100% {opacity:0;}
 }

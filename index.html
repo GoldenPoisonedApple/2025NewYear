@@ -1,6 +1,15 @@
 <!DOCTYPE html>
 <html lang="ja">
 
+<!-- 
+お前もやはり高専生か...
+分かる。やっぱり見たくなるよねこういう所
+今回は割とかっつり作ったのでイケてるのではと思ったけど
+新年が近くてギリギリで作った所のCSSとかカスなのであんまり見ないで...
+今作り途中だけど何とか作り終えられそう。
+ちょっと気を抜いたら年越せなさそうなんだけど。
+昨日までコミケにいたってのにさぁ。行きと帰りの電車でもスマホでコード書いてたんですよ。アホすぎる
+-->
 
 <head>
 	<meta charset="UTF-8">
@@ -28,12 +37,11 @@
 
 </head>
 
-<!-- 描画要素 気まぐれにより右クリックしても何も起こらなくした -->
-
-<body oncontextmenu="return false">
+<!-- 描画要素 右クリックできないようにし、選択もできない -->
+<body oncontextmenu="return false" class="no-select">
 	<!-- title -->
 	<div class="title">
-		<h1 class="year-num">2025年</h1>
+		<h1 class="year-num" onclick="js_onclick()">2025年</h1>
 		<h1>あけまして&#8203;おめでとうございます</h1>
 	</div>
 
@@ -54,9 +62,13 @@
 	<footer>
 		<p>今年は巳年、乙巳（きのとみ）らしいですね。皆様におかれましては、進学や就職等で変化の年となることと思います。今年も皆様にとって素晴らしい一年となりますように。</p>
 		<p>from : へっへっ、個人用アカウント、国士無双三十六面待ち</p>
-		@非実在株式会社 CFEEL 代表取締役 伊藤
-		3Dテクスチャ：CC0 Textures
+		<p>Webデザイン・プログラム・3Dデザイン:伊藤<br>3Dテクスチャ:CC0 Textures様<br>使用ソフト:VSCode・Blender・Aviutl・Photoshop</p>
 	</footer>
+
+
+	<!-- speech bubbles -->
+	<div class="balloon-parent" id="speech_bubbles">
+	</div>
 
 
 	<!-- templete -->
@@ -85,7 +97,72 @@
 </body>
 
 
-<!-- JavaScript -->
+<!-- ボタン配置 -->
 <script src="script.js"></script>
+
+<!-- 吹き出し関係 -->
+<script>
+	const random = (min, max) => Math.random() * (max - min + 1) + min | 0;
+	const MAX_COUNT = 30;
+	//吹き出しの数
+	let speech_bubble_count = 0;
+	const speech_bubble_text = [
+		'ｵﾒﾃﾞﾄｰ',
+		'誕生日おめでとー',
+		'おめでとう！',
+		'おめでございます',
+		'おめでと！',
+		'めでたいねぇ...',
+		'めでたすぎる.....!',
+		'めっちゃめでたい(語彙力)',
+		'めでたすぎるって....',
+		'おめでとう！',
+		'あなた誕生日ですよ！今日！',
+		'おめでと！！！！！！',
+		'(謎の技術力)',
+		'レポートで培ったHTMLをとくと見よ!',
+		'Happy Birthday!',
+		'おめでとうございます！',
+		'ちゃんとテスト前に作ってるから大丈夫',
+		'これはオフラインなので心配なさらず',
+		'誕プレは土曜日に渡すね',
+		'作ってたら楽しくなってきちゃった',
+		'随分と凝った感じになった',
+		'テスト頑張ろうね！',
+		'テスト終了まであと3日!',
+		'ナタデココ食べたい',
+		'改行できなくてAA貼れなかった',
+		'ここのクリックよく気づいたね',
+		'ちゃんと動いてるといいけど...',
+	];
+
+	//エレメント取得
+	let speech_bubbles_parent = document.getElementById('speech_bubbles');
+
+	//クリック時呼び出し
+	function js_onclick() {
+		if (speech_bubble_count < MAX_COUNT) {
+			speech_bubble_count++;
+			// 要素作成
+			var balloonDiv = document.createElement("div");
+			balloonDiv.classList.add("balloon");
+			var pElement = document.createElement("p");
+			pElement.textContent = speech_bubble_text[random(0, speech_bubble_text.length-1)];
+			balloonDiv.appendChild(pElement);
+
+			// 要素内の最後に追加
+			speech_bubbles_parent.appendChild(balloonDiv);
+
+			//一定時間で削除
+			setTimeout(function() {
+				balloonDiv.style.animation = "feed-out 1s 0s"; 
+			}, 6000);
+			setTimeout(function() { 
+				balloonDiv.remove();
+				speech_bubble_count--;
+			}, 7000);
+		}
+	}
+</script>
 
 </html>
