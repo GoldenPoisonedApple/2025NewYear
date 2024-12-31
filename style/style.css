@@ -186,8 +186,14 @@ footer {
 	background-color: #fff;
 	border: 2px solid #ff2121;
 	padding: 1rem;
-	width: 80%;
+	width: 30%;
 	z-index: 105;
+}
+/* スマホ表示用 */
+@media screen and (max-width: 768px) {
+  .modal-content {
+		width: 90%;
+  }
 }
 .fortune-video {
 	width: 50%;
