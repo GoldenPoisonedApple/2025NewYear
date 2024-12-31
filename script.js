@@ -96,7 +96,6 @@ class FortuneRenderer {
 				const text = document.createElement('p');
 				text.textContent = `${j} × ${i}`;
 				text.style.fontSize = '0.8rem';
-				text.style.color = '#ff2121';
 				button.appendChild(text);
 
 				// ボタンクリック時のイベントリスナー設定
