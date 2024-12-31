@@ -20,7 +20,7 @@
 	<link rel="stylesheet" href="style.css">
 
 	<!-- ファビコン -->
-	<link rel="icon" href="icon.png" type="image/png">
+	<link rel="icon" href="icon/icon.png" type="image/png">
 	<!-- サムネ -->
 	<meta property="og:url" content="http://153.127.215.8/2025NewYear/" />
 	<meta property="og:title" content="おみくじ、襲来" />
@@ -39,9 +39,12 @@
 
 <!-- 描画要素 右クリックできないようにし、選択もできない -->
 <body oncontextmenu="return false" class="no-select">
+	<!-- icon -->
+	<img src="icon/初日の出.png" alt="初日の出アイコン" class="left-icon">
+	<img src="icon/ヘビ.png" alt="ヘビアイコン" class="right-icon" onclick="js_onclick()">
 	<!-- title -->
 	<div class="title">
-		<h1 class="year-num" onclick="js_onclick()">2025年</h1>
+		<h1 class="year-num">2025年</h1>
 		<h1>あけまして&#8203;おめでとうございます</h1>
 	</div>
 

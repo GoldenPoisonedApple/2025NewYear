@@ -60,6 +60,27 @@ p {
 	font-size: 4rem;
 }
 
+.right-icon {
+	position: absolute;
+	top: 1rem; /* 画面上からの距離 */
+	right: 1rem; /* 画面右からの距離 */
+	width: 3rem;
+	height: 3rem;
+	/*background-color: coral; /* アイコンの背景色 */
+	/*border-radius: 50%; /* 丸いアイコンにする場合 */
+	object-fit: cover; /* 画像のアスペクト比を維持して枠に収める */
+}
+.left-icon {
+	position: absolute;
+	top: 1rem; /* 画面上からの距離 */
+	left: 1rem; /* 画面右からの距離 */
+	width: 3rem;
+	height: 3rem;
+	/*background-color: coral; /* アイコンの背景色 */
+	/*border-radius: 50%; /* 丸いアイコンにする場合 */
+	object-fit: cover; /* 画像のアスペクト比を維持して枠に収める */
+}
+
 
 /* メインコンテンツ */
 .main {
